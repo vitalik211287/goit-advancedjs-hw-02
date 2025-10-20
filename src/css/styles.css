@@ -209,3 +209,159 @@ button[data-start]:disabled{
 .value--mono{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+
+/* form */
+
+
+.form {
+  width: 340px;
+  padding: 24px;
+  margin: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.form label {
+  display: block;
+  margin-bottom: 16px;
+  color: #333;
+  font-size: 14px;
+}
+
+.form input {
+  box-sizing: border-box; /* 👈 додаємо це */
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: none;
+}
+.form input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.form button {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.form button:hover {
+  background-color: #357ab8;
+  transform: scale(1.02);
+}
+
+.form button:active {
+  transform: scale(0.98);
+}
+
+
+
+
+/* === Radio group (fieldset) === */
+.form fieldset{
+  box-sizing: border-box; /* 👈 додаємо це */
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: none;
+}
+
+.form fieldset:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.form fieldset legend{
+  padding: 0 6px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--muted, #6b7280);
+}
+
+/* Контейнер для лейблів (можна не додавати окремий div; дивись варіант нижче) */
+.form fieldset{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+
+/* Лейбл з радіо */
+.form fieldset > label{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: gray;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Кастомне радіо */
+.form input[type="radio"]{
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--border, #e5e7eb);
+  background: #fff;
+  display: grid;
+  place-items: center;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  outline: none;
+}
+
+.form input[type="radio"]::after{
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform .12s ease-in-out;
+  background: var(--accent, #2563eb); 
+}
+
+.form input[type="radio"]:hover{
+  border-color: color-mix(in srgb, var(--accent, #2563eb) 40%, var(--border, #e5e7eb));
+}
+
+.form input[type="radio"]:focus-visible{
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, #2563eb) 18%, transparent);
+  border-color: var(--accent, #2563eb);
+}
+
+.form input[type="radio"]:checked{
+  border-color: var(--accent, #2563eb);
+}
+
+.form input[type="radio"]:checked::after{
+  transform: scale(1);
+}
+
+/* дрібний фікс для мобільних: щоби не липло до країв */
+@media (max-width: 420px){
+  .form fieldset{ padding: 10px; }
+}
